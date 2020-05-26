@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   mode: "development",
 
-  entry: './src/ts/index.tsx',
+  entry: path.resolve(__dirname, 'src/ts/index.tsx'),
 
   devtool: 'source-map',
 
@@ -33,8 +33,8 @@ module.exports = {
         test: /\.(png|svg|jpg|gif|woff|woff2|eot|ttf|oft)$/,
         loader: 'file-loader',
         options: {
-          limit: 20480,
-          name:"./images/[name].[ext]"
+          limit: 8192,
+          name: path.resolve(__dirname, "./images/[name].[ext]")
         }
       },
     ]
@@ -46,7 +46,7 @@ module.exports = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      template: './dist/index.html'
+      template: path.resolve(__dirname, 'dist/index.html')
     })
   ]
 }

@@ -4,7 +4,6 @@ type Props = {
   name: string;
 }
 
-const App: React.FC<Props> = (props)=> <h1>{props.name}</h1> ;
-
+const App: React.FC<Props> = ({name})=> <h1 data-testid="app">{name}</h1> ;
 
 export default App;
