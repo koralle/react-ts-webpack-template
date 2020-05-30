@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const BabelMinifyPlugin = require('babel-minify-webpack-plugin');
 
 module.exports = {
   mode: "development",
@@ -9,7 +10,7 @@ module.exports = {
   devtool: 'source-map',
 
   output: {
-    path: path.resolve(__dirname, 'dist/js'),
+    path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
   },
 
@@ -34,7 +35,7 @@ module.exports = {
         loader: 'file-loader',
         options: {
           limit: 8192,
-          name: path.resolve(__dirname, "./images/[name].[ext]")
+          name: path.resolve(__dirname, "images/[name].[ext]")
         }
       },
     ]
@@ -45,8 +46,10 @@ module.exports = {
   },
 
   plugins: [
+    new BabelMinifyPlugin(),
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'dist/index.html')
+      //filename: "index.html",
+      template: path.resolve(__dirname, "src/html/index.html")
     })
   ]
 }
